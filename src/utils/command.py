@@ -8,6 +8,5 @@ def make_add_participation_command(contest_id: int, password: str = "", username
     return "cmsAddParticipation -c {} -p {} {}".format(contest_id, password, username)
 
 def execute_command(commands: List[str]):
-    print(commands)
-    # for command in commands:
-    #     os.system(command)
+    for command in commands:
+        os.system(command)
