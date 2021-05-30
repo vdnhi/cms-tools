@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 
+if [[ ! "$(python3 -V)" =~ "Python 3" ]]
+then
+  echo "Missing python3, please install python3 first"
+  exit 1
+fi
+
 if [[ ! -d venv ]]
+
 then
   python3 -m venv venv
 fi
@@ -26,10 +33,15 @@ function do_install_requirement() {
   fi
 }
 
+function do_clean_dummy_resource() {
+  rm -rf build dist
+}
+
 case "$1" in
   "build") do_build ;;
   "test") do_test ;;
   "install") do_install_requirement ;;
+  "clean" do)do_clean_dummy_resource ;;
 esac
 
 deactivate
